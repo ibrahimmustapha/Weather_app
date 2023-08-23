@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-weather',
