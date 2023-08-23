@@ -1,36 +1,46 @@
 <app-header></app-header>
-<div class="weather-container">
-  <div class="search-container">
-    <input type="text" placeholder="Search your city" [(ngModel)]="city" />
-    <div class="btn" (click)="getWeatherForecast()">Search</div>
+<div class="grid grid-cols-2 max-w-4xl m-auto my-24 items-center">
+  <div class="w-10/12">
+    <input
+      type="text"
+      class="shadow-md p-4 rounded-2xl w-full"
+      placeholder="Search your city"
+      [(ngModel)]="city"
+    />
+    <div
+      class="shadow-md bg-slate-500 p-4 rounded-2xl text-center my-4 text-white font-black"
+      (click)="getWeatherForecast()"
+    >
+      Search
+    </div>
   </div>
-  <div class="card">
-    <div class="top">
-      <div class="card-title">{{ city }}</div>
-      <div class="rain-chance">
+  <div class="shadow-lg bg-white rounded-2xl">
+    <div class="text-center pt-4">
+      <div class="text-5xl font-black py-4">{{ city }}</div>
+      <div class="text-lg text-slate-400">
         cloud percentage is {{ weather?.cloud_pct }}%
       </div>
-      <div class="image-container">
-        <img [src]="weatherImageLink" alt="cloud_image" />
+      <div class="py-6">
+        <img class="object-center mx-auto w-36" [src]="weatherImageLink" alt="cloud_image" />
       </div>
-      <div class="weather-degrees">{{ weather?.temp }}°</div>
+      <div class="text-5xl font-black">{{ weather?.temp }}°</div>
     </div>
-    <div class="bottom">
-      <div class="weather-details">
-        <div class="weather-title">MAX TEMP</div>
-        <div class="weather-stat">{{ weather?.max_temp }}°</div>
+    <div class="grid grid-cols-2 gap-5 text-center m-5">
+      <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
+        <div class="text-lg text-slate-400 pb-3">MAX TEMP</div>
+        <div class="text-2xl font-black">{{ weather?.max_temp }}°</div>
       </div>
-      <div class="weather-details">
-        <div class="weather-title">MIN TEMP</div>
-        <div class="weather-stat">{{ weather?.min_temp }}°</div>
+      <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
+        <div class="text-lg text-slate-400 pb-3">MIN TEMP</div>
+        <div class="text-2xl font-black">{{ weather?.min_temp }}°</div>
       </div>
-      <div class="weather-details">
-        <div class="weather-title">HUMIDITY</div>
-        <div class="weather-stat">{{ weather?.humidity }}%</div>
+      <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
+        <div class="text-lg text-slate-400 pb-3">HUMIDITY</div>
+        <div class="text-2xl font-black">{{ weather?.humidity }}%</div>
       </div>
-      <div class="weather-details">
-        <div class="weather-title">WIND SPEED</div>
-        <div class="weather-stat">{{ weather?.wind_speed }}m/s</div>
+      <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
+        <div class="text-lg text-slate-400 pb-3">WIND SPEED</div>
+        <div class="text-2xl font-black">{{ weather?.wind_speed }}m/s</div>
       </div>
     </div>
   </div>
