@@ -1,0 +1,60 @@
+.header-container {
+  background-color: #ffffff;
+  .inner-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .links-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .github img {
+      width: 27px;
+    }
+
+    .twitter img {
+      width: 25px;
+    }
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+
+  .product-item {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+
+      .title {
+        font-weight: bold;
+        margin-top: 10px;
+
+        .price {
+          color: green;
+          margin-top: 5px;
+
+          .description {
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+}

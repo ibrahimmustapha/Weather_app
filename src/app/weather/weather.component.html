@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="weather-container">
+  <div class="search-container">
+    <input type="text" placeholder="Search your city" [(ngModel)]="city" />
+    <div class="btn" (click)="getWeatherForecast()">Search</div>
+  </div>
+  <div class="card">
+    <div class="top">
+      <div class="card-title">{{ city }}</div>
+      <div class="rain-chance">
+        cloud percentage is {{ weather?.cloud_pct }}%
+      </div>
+      <div class="image-container">
+        <img [src]="weatherImageLink" alt="cloud_image" />
+      </div>
+      <div class="weather-degrees">{{ weather?.temp }}°</div>
+    </div>
+    <div class="bottom">
+      <div class="weather-details">
+        <div class="weather-title">MAX TEMP</div>
+        <div class="weather-stat">{{ weather?.max_temp }}°</div>
+      </div>
+      <div class="weather-details">
+        <div class="weather-title">MIN TEMP</div>
+        <div class="weather-stat">{{ weather?.min_temp }}°</div>
+      </div>
+      <div class="weather-details">
+        <div class="weather-title">HUMIDITY</div>
+        <div class="weather-stat">{{ weather?.humidity }}%</div>
+      </div>
+      <div class="weather-details">
+        <div class="weather-title">WIND SPEED</div>
+        <div class="weather-stat">{{ weather?.wind_speed }}m/s</div>
+      </div>
+    </div>
+  </div>
+</div>
