@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss'],
 })
-
 export class WeatherComponent implements OnInit {
   city = 'Accra';
   weatherImageLink = '';
@@ -21,8 +21,8 @@ export class WeatherComponent implements OnInit {
   getWeatherForecast() {
     const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather';
     const headers = new HttpHeaders({
-      'X-RapidAPI-Key': '3670434b68mshf9eef8ae6678c93p1c9920jsne43b3e9802c5',
-      'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com',
+      'X-RapidAPI-Key': environment.apiKey,
+      'X-RapidAPI-Host': environment.host,
     });
     const params = new HttpParams().set('city', this.city);
     const weatherConditions = {
@@ -36,7 +36,7 @@ export class WeatherComponent implements OnInit {
     this.http.get(url, { headers, params }).subscribe((response) => {
       this.weather = response;
       if (this.weather.temp < 0)
-      this.weatherImageLink = weatherConditions.snowy;
+        this.weatherImageLink = weatherConditions.snowy;
       if (this.weather.temp <= 15 && this.weather.temp >= 0)
         this.weatherImageLink = weatherConditions.thunder;
       if (this.weather.temp >= 16 && this.weather.temp <= 20)
