@@ -1,14 +1,14 @@
 <app-header></app-header>
-<div class="grid grid-cols-2 max-w-4xl m-auto my-24 items-center">
-  <div class="w-10/12">
+<div class="grid grid-cols-1 md:grid-cols-2 p-5 max-w-4xl m-auto my-10 md:my-24 items-center">
+  <div class="md:w-10/12 w-full">
     <input
       type="text"
-      class="shadow-md p-4 rounded-2xl w-full"
+      class="shadow-md p-4 rounded-full w-full"
       placeholder="Search your city"
       [(ngModel)]="city"
     />
     <div
-      class="shadow-md bg-slate-500 p-4 rounded-2xl text-center my-4 text-white font-black"
+      class="shadow-md bg-slate-500 p-4 rounded-full text-center my-4 text-white font-black cursor-pointer active:animate-pulse"
       (click)="getWeatherForecast()"
     >
       Search
@@ -20,10 +20,10 @@
       <div class="text-lg text-slate-400">
         cloud percentage is {{ weather?.cloud_pct }}%
       </div>
-      <div class="py-6">
+      <div class="pt-6">
         <img class="object-center mx-auto w-36" [src]="weatherImageLink" alt="cloud_image" />
       </div>
-      <div class="text-5xl font-black">{{ weather?.temp }}°</div>
+      <div class="text-5xl font-black py-5">{{ weather?.temp }}°</div>
     </div>
     <div class="grid grid-cols-2 gap-5 text-center m-5">
       <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
