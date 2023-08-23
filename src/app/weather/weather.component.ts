@@ -21,8 +21,8 @@ export class WeatherComponent implements OnInit {
   getWeatherForecast() {
     const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather';
     const headers = new HttpHeaders({
-      'X-RapidAPI-Key': environment.apiKey,
-      'X-RapidAPI-Host': environment.host,
+      'X-RapidAPI-Key': "3670434b68mshf9eef8ae6678c93p1c9920jsne43b3e9802c5",
+      'X-RapidAPI-Host': "weather-by-api-ninjas.p.rapidapi.com",
     });
     const params = new HttpParams().set('city', this.city);
     const weatherConditions = {
