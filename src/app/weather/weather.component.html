@@ -3,7 +3,7 @@
   <div class="md:w-10/12 w-full">
     <input
       type="text"
-      class="shadow-md p-4 rounded-full w-full"
+      class="shadow-md p-4 rounded-full w-full text-center "
       placeholder="Search your city"
       [(ngModel)]="city"
     />
@@ -27,19 +27,19 @@
     </div>
     <div class="grid grid-cols-2 gap-3 md:gap-5 text-center m-5">
       <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
-        <div class="text-lg text-slate-400 pb-3">MAX TEMP</div>
+        <div class="text-sm text-slate-400 pb-3">MAX TEMP</div>
         <div class="text-2xl font-black">{{ weather?.max_temp }}°</div>
       </div>
       <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
-        <div class="text-lg text-slate-400 pb-3">MIN TEMP</div>
+        <div class="text-sm text-slate-400 pb-3">MIN TEMP</div>
         <div class="text-2xl font-black">{{ weather?.min_temp }}°</div>
       </div>
       <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
-        <div class="text-lg text-slate-400 pb-3">HUMIDITY</div>
+        <div class="text-sm text-slate-400 pb-3">HUMIDITY</div>
         <div class="text-2xl font-black">{{ weather?.humidity }}%</div>
       </div>
       <div class="shadow-md px-3 rounded-xl py-6 border-2 border-b-gray-100">
-        <div class="text-lg text-slate-400 pb-3">WIND SPEED</div>
+        <div class="text-sm text-slate-400 pb-3">WIND SPEED</div>
         <div class="text-2xl font-black">{{ weather?.wind_speed }}m/s</div>
       </div>
     </div>
