@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather.component.scss'],
 })
 export class WeatherComponent implements OnInit {
-  city = 'Accra';
+  math = Math;
+  city = 'Antarctica';
+  language = 'EN'
   weatherImageLink = '';
   weather: any;
+  cool = "30";
 
   ngOnInit(): void {
     this.getWeatherForecast();
@@ -18,12 +21,17 @@ export class WeatherComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   getWeatherForecast() {
-    const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather';
+    const url = `https://open-weather13.p.rapidapi.com/city/${this.city}/${this.language}`;
+
     const headers = new HttpHeaders({
-      'X-RapidAPI-Key': "3670434b68mshf9eef8ae6678c93p1c9920jsne43b3e9802c5",
-      'X-RapidAPI-Host': "weather-by-api-ninjas.p.rapidapi.com",
+      'x-rapidapi-key': '6c39472d9emsha8af3a7316fc9c3p18326djsn9800f36e63a3',
+      'x-rapidapi-host': 'open-weather13.p.rapidapi.com',
     });
-    const params = new HttpParams().set('city', this.city);
+
+    const params = new HttpParams()
+    .set('city', this.city)
+    .set('lang', this.language);    
+    
     const weatherConditions = {
       clear: 'assets/images/animated/day.svg',
       rainy: 'assets/images/animated/rainy-6.svg',
@@ -32,22 +40,27 @@ export class WeatherComponent implements OnInit {
       snowy: 'assets/images/animated/snowy-6.svg',
       thunder: 'assets/images/animated/thunder.svg',
     };
-    this.http.get(url, { headers, params }).subscribe((response) => {
+    
+    this.http.get(url, { headers }).subscribe((response) => {
       this.weather = response;
-      if (this.weather.temp < 0)
+
+      const temp = this.weather.main.temp;
+
+      if (temp < 0) {
         this.weatherImageLink = weatherConditions.snowy;
-      if (this.weather.temp <= 15 && this.weather.temp >= 0)
+      } else if (temp <= 15) {
         this.weatherImageLink = weatherConditions.thunder;
-      if (this.weather.temp >= 16 && this.weather.temp <= 20)
+      } else if (temp <= 20) {
         this.weatherImageLink = weatherConditions.rainy;
-      if (this.weather.temp <= 30 && this.weather.temp >= 21)
+      } else if (temp <= 30) {
         this.weatherImageLink = weatherConditions.clear0;
-      if (this.weather.temp <= 40 && this.weather.temp >= 31)
+      } else if (temp <= 40) {
         this.weatherImageLink = weatherConditions.clear;
-      if (this.weather.temp >= 50)
+      } else {
         this.weatherImageLink = weatherConditions.clear;
-      console.log(this.weather);
-    });
+
+      // console.log(this.weather.main.temp);
+    }});
   }
 }
 
