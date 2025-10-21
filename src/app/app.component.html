@@ -1,4 +1,18 @@
-<router-outlet></router-outlet>
-<div>
-  <app-weather></app-weather>
+<div class="relative min-h-screen overflow-hidden bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+  <div class="pointer-events-none absolute inset-x-0 top-0 flex justify-center">
+    <div class="h-72 w-72 -translate-y-32 rounded-full bg-cyan-200/50 blur-3xl transition-colors duration-500 sm:h-96 sm:w-96 dark:bg-cyan-500/40"></div>
+  </div>
+  <div class="pointer-events-none absolute -left-24 top-1/3 h-80 w-80 rounded-full bg-violet-200/40 blur-3xl transition-colors duration-500 sm:h-[420px] sm:w-[420px] dark:bg-violet-500/30"></div>
+  <div class="pointer-events-none absolute -right-28 bottom-0 h-80 w-80 rounded-full bg-sky-200/40 blur-3xl transition-colors duration-500 sm:h-[420px] sm:w-[420px] dark:bg-sky-400/30"></div>
+
+  <div class="relative z-10 flex min-h-screen flex-col">
+    <app-header></app-header>
+    <main class="flex-1">
+      <router-outlet></router-outlet>
+      <app-weather></app-weather>
+    </main>
+    <footer class="px-6 pb-8 text-center text-xs text-slate-500 transition-colors duration-300 dark:text-slate-400">
+      Built with Angular & Tailwind | Stay curious about the skies
+    </footer>
+  </div>
 </div>

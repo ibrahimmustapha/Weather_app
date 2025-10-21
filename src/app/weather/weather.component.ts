@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class WeatherComponent implements OnInit {
   math = Math;
   city = 'Antarctica';
-  language = 'EN'
+  language = 'EN';
   weatherImageLink = '';
   weather: any;
-  cool = "30";
+  presetCities: string[] = ['Canberra', 'Buenos Aires', 'Montevideo', 'Accra', 'Tamale'];
 
   ngOnInit(): void {
     this.getWeatherForecast();
@@ -21,6 +21,13 @@ export class WeatherComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   getWeatherForecast() {
+    const trimmedCity = this.city?.trim();
+    if (!trimmedCity) {
+      return;
+    }
+
+    this.city = trimmedCity;
+
     const url = `https://open-weather13.p.rapidapi.com/city/${this.city}/${this.language}`;
 
     const headers = new HttpHeaders({
@@ -28,10 +35,6 @@ export class WeatherComponent implements OnInit {
       'x-rapidapi-host': 'open-weather13.p.rapidapi.com',
     });
 
-    const params = new HttpParams()
-    .set('city', this.city)
-    .set('lang', this.language);    
-    
     const weatherConditions = {
       clear: 'assets/images/animated/day.svg',
       rainy: 'assets/images/animated/rainy-6.svg',
@@ -58,9 +61,13 @@ export class WeatherComponent implements OnInit {
         this.weatherImageLink = weatherConditions.clear;
       } else {
         this.weatherImageLink = weatherConditions.clear;
+      }
+    });
+  }
 
-      // console.log(this.weather.main.temp);
-    }});
+  selectPreset(cityName: string) {
+    this.city = cityName;
+    this.getWeatherForecast();
   }
 }
 

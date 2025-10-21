@@ -1,60 +1,61 @@
-.header-container {
-  background-color: #ffffff;
-  .inner-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px;
-    .logo {
-      font-weight: bold;
-      font-size: 20px;
-    }
-
-    .links-container {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .github img {
-      width: 27px;
-    }
-
-    .twitter img {
-      width: 25px;
-    }
-  }
+:host {
+  display: block;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.social-link {
+  box-shadow: 0 15px 32px -24px rgba(30, 64, 175, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-  .product-item {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
+.social-link:hover,
+.social-link:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 24px 44px -24px rgba(59, 130, 246, 0.45);
+}
 
-    .image-container img {
-      width: 100%;
-      height: auto;
+:host-context(.dark) .social-link {
+  box-shadow: 0 18px 35px -22px rgba(56, 189, 248, 0.55);
+}
 
-      .title {
-        font-weight: bold;
-        margin-top: 10px;
+:host-context(.dark) .social-link:hover,
+:host-context(.dark) .social-link:focus-visible {
+  box-shadow: 0 25px 40px -18px rgba(129, 199, 212, 0.65);
+}
 
-        .price {
-          color: green;
-          margin-top: 5px;
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  box-shadow: 0 15px 36px -24px rgba(59, 130, 246, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
 
-          .description {
-            margin-top: 5px;
-          }
-        }
-      }
-    }
-  }
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 52px -26px rgba(59, 130, 246, 0.45);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+}
+
+:host-context(.dark) .theme-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  box-shadow: 0 22px 48px -30px rgba(56, 189, 248, 0.45);
+}
+
+:host-context(.dark) .theme-toggle:hover,
+:host-context(.dark) .theme-toggle:focus-visible {
+  box-shadow: 0 28px 60px -30px rgba(125, 211, 252, 0.6);
+  border-color: rgba(125, 211, 252, 0.55);
 }
